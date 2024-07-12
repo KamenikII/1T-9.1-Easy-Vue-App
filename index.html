@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First Vue.js</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{title}}: {{count}}</h1>
+      <button v-on:click="addCount(5, 'add smtg', $event)">Add</button>
+      <button @click="addCount(-5, 'delete smtg', $event)">Delete</button>
+      <!-- v-on: и @ это одно и то же -->
+
+      <hr>
+
+      <div>
+        <h2>Look at this: {{subTitle}}</h2>
+        <input type="text" v-on:input="saySmtg" />
+      </div>
+
+      <hr>
+
+      <div>
+        <!-- Чек DOM-древо -->
+        <h1 v-if="isVisible">V-if</h1>
+        <h2 v-else>V-else</h2>
+
+        <h1 v-if="isVisible">V-if</h1>
+        <h2 v-if="!isVisible">V-else</h2>
+
+        <h1 v-show="isVisible">V-if</h1>
+        <h2 v-show="!isVisible">V-else</h2>
+        <button @click="isVisible = !isVisible">Hide n Seek</button>
+      </div>
+
+      <hr>
+
+      <div>
+        <h2 v-if="char === 'a'">A</h2>
+        <h2 v-else-if="char === 'b'">B</h2>
+        <h2 v-else-if="char === 'c'">C</h2>
+        <h2 v-else>None</h2>
+        <input type="text" v-model="char" />
+      </div>
+
+      <hr>
+
+      <template v-if="isVisible">
+        <h2>hello</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis,
+          ut sapiente. Eum cupiditate dolorum accusantium.
+        </p>
+      </template>
+      <template v-else>
+        <h2 style="color: green;">world</h2>
+        <p style="color: green;">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
+          voluptates illo obcaecati architecto consequuntur maiores, fugiat
+          facere.
+        </p>
+      </template>
+
+      <hr>
+
+      <ul>
+        <li v-for="(student, index) in students">{{index+1}}. {{student.name}}, {{student.age}}</li>
+        
+        <li v-for="(student, index) of students">{{index+1}}. {{student.name}}, {{student.age}}</li>
+
+        <li v-for="(value, key) in person">{{key}}: {{value}}</li>
+      </ul>
+
+      <hr>
+
+      <form>
+        <span>{{counter}} / 30</span>
+        <textarea v-model="textValue"></textarea>
+        <button v-if="counter <= 30">send</button>
+      </form>
+
+
+      <!-- HomeWork -->
+      <hr>
+    
+      <h2>{{btnTitle}}: {{btnCount}}</h2>
+      <button @click="btnCount++">Click</button>
+      
+      <hr>
+
+      <div>
+        <button @click="say(1)">Say Hello</button>
+        <button @click="say(2)">Say What</button>
+      </div>
+
+      <hr>
+
+      <ul>
+        <li v-for="item in items">id: {{item.id}} || message: {{item.message}}</li>
+      </ul>
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="vue.js"></script>
+  </body>
+</html>
